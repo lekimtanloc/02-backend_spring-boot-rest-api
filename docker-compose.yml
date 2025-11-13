@@ -1,0 +1,17 @@
+services:
+  backend:
+    image: lekimtanloc/02-backend_spring-boot-rest-api:v1
+    container_name: backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3306/full-stack-ecommerce
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    external: true
