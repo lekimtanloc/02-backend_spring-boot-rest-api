@@ -6,6 +6,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+      targetPort: 8080
+      nodePort: {{ .Values.service.nodePort | default nil }}
   selector:
     app: {{ include "02-backend-spring-boot-rest-api.name" . }}

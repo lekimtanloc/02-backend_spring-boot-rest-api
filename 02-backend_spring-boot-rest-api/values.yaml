@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: lekimtanloc/02-backend_spring-boot-rest-api
@@ -11,6 +11,7 @@ imagePullSecrets:
 service:
   type: NodePort
   port: 8080
+  nodePort: 30646   
 
 ingress:
   enabled: true
@@ -32,12 +33,12 @@ config:
   JAVA_OPTS: "-Xmx512m"
 
 secret:
-  DATABASE_URL: "jdbc:mysql://mariadb:3306/full-stack-ecommerce"
-  DATABASE_USER: "root"
-  DATABASE_PASSWORD: "root"
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mariadb:3306/full-stack-ecommerce"
+  SPRING_DATASOURCE_USERNAME: "root"
+  SPRING_DATASOURCE_PASSWORD: "root"
 
 hpa:
-  enabled: true
-  minReplicas: 2
+  enabled: false
+  minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 70
